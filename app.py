@@ -4,6 +4,11 @@ import os
 
 app = Flask(__name__)
 
+
+@app.route("/")
+def home():
+    return "render.yamlがバグってます。"
+
 def download_youtube_as_mp3(url):
     ydl_opts = {
         'format': 'bestaudio/best',
