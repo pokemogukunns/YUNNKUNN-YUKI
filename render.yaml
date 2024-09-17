@@ -1,7 +1,7 @@
 services:
   - type: web
     name: youtube-mp3-flask
-    env: python
-    buildCommand: ""
+    env: python  # ここでPython環境を指定
+    buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app
     plan: free
