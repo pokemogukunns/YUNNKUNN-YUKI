@@ -30,3 +30,14 @@ def index():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        try:
+            url = request.form["url"]
+            mp3_file = download_youtube_as_mp3(url)
+            return send_file(mp3_file, as_attachment=True)
+        except Exception as e:
+            return f"エラーが発生しました: {str(e)}"
+    return render_template("index.html")
