@@ -1,7 +1,11 @@
 services:
   - type: web
-    name: youtube-mp3-flask
-    env: python  # ここでPython環境を指定
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    name: yokosuka
+    env: python
+    region: Oregon
     plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn --port $PORT --host 0.0.0.0 app:app"
+    envVars:
+    - key: PYTHON_VERSION
+      value: 3.10.9
